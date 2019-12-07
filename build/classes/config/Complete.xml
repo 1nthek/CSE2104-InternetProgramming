@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="CompleteInfo">
+	<resultMap type="Complete" id="Completey">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+	</resultMap>
+	<select id="getId" resultType="int">
+       select max(order_no) from orders;
+	</select>
+	<insert id="addOrder" parameterType="map">
+		insert into orders(user_id, receiver_name, receiver_address, receiver_email, receiver_phone) values(#{id}, #{name}, #{address}, #{email}, #{phone});
+	</insert>
+	
+	<insert id="addProduct" parameterType="map">
+		insert into order_products(order_no, product_no) values(#{ono}, #{no});
+	</insert>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="HelpInfo">
+	<resultMap type="Help" id="Help">
+		<result column="help_no" property="no" />
+		<result column="help_title" property="title" />
+		<result column="help_content" property="content" />
+		<result column="help_writer" property="writer" />
+	</resultMap>
+	<select id="get" resultMap="Help">
+		select * from help order by help_no desc;
+	</select>
+	
+	<select id="getOne" resultMap="Help" parameterType="map">
+		select * from help where help_no=#{no};
+	</select>
+	
+	<insert id="add" parameterType="map">
+		insert into help(help_title, help_content, help_writer) values(#{title}, #{content}, #{writer});
+	</insert>
+	
+	<update id="update" parameterType="map">
+		update help
+		set help_title=#{title}, help_content=#{content}, help_writer=#{writer}
+		where help_no=#{no};
+	</update>
+	
+	<delete id="remove" parameterType="map">
+		delete from help where help_no=#{no};
+	</delete>
+</mapper>

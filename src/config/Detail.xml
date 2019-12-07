@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="DetailInfo">
+	<resultMap type="Detail" id="Detail">
+		<result column="product_no" property="no" />
+		<result column="product_price" property="price" />
+		<result column="product_name" property="name" />
+		<result column="product_img_url" property="imgUrl" />
+		<result column="product_content" property="content" />
+		<result column="product_category" property="category" />
+		<result column="product_material" property="material" />
+		<result column="product_size" property="size" />
+	</resultMap>
+	<select id="byNo" resultMap="Detail" parameterType="map">
+		select * from products where product_no=#{no};
+	</select>
+	<delete id="remove" parameterType="map">
+		delete from products where product_no=#{no};
+	</delete>
+	<insert id="add" parameterType="map">
+		insert into products(product_price, product_name, product_img_url, product_content, product_category, product_material, product_size) values(#{price}, #{name}, #{imgUrl}, #{content}, #{category}, #{material}, #{size});
+	</insert>
+</mapper>

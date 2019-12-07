@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="CartInfo">
+	<resultMap type="Cart" id="Cart">
+		<result column="user_id" property="id" />
+		<result column="product_no" property="no" />
+		<result column="product_price" property="price" />
+		<result column="product_name" property="name" />
+		<result column="product_img_url" property="imgUrl" />
+		<result column="count(carts.product_no)" property="cnt" />
+		<result column="sum(product_price)" property="totalPrice" />
+	</resultMap>
+	<select id="fetch" resultMap="Cart" parameterType="map">
+		select carts.product_no, count(carts.product_no), products.product_name, products.product_img_url, products.product_price
+		from carts join products
+		on carts.product_no=products.product_no
+		where user_id=#{id}
+		group by product_no;
+	</select>
+	<select id="getPrice" resultType="String" parameterType="map">
+		select sum(product_price) from carts join products on carts.product_no=products.product_no where user_id=#{id};
+	</select>
+	<insert id="add" parameterType="map">
+		insert into carts(user_id, product_no) values(#{id}, #{no});
+	</insert>
+	<delete id="remove" parameterType="map">
+		delete from carts where user_id=#{id} and product_no=#{no};
+	</delete>
+	<delete id="removeAll" parameterType="map">
+		delete from carts where user_id=#{id};
+	</delete>
+</mapper>

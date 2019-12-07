@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="JoinInfo">
+	<resultMap type="Join" id="Join">
+		<result column="user_id" property="id" />
+		<result column="user_pw" property="pw" />
+		<result column="user_name" property="name" />
+		<result column="user_email" property="email" />
+		<result column="user_address" property="address" />
+		<result column="user_phone" property="phone" />
+		<result column="is_admin" property="is_admin" />
+	</resultMap>
+	<select id="get" resultMap="Join" parameterType="map">
+		select * from users where user_id=#{id};
+	</select>
+	
+	<insert id="addUser" parameterType="map">
+		insert into users(user_id, user_pw) values(#{id}, #{pw});
+	</insert>
+
+	<insert id="addUserInfo" parameterType="map">
+		insert into users_info(user_id, user_name, user_email, user_address, user_phone, is_admin) values(#{id}, #{name}, #{email}, #{address}, #{phone}, false);
+	</insert>
+</mapper>

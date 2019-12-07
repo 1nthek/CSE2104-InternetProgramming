@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="LoginInfo">
+	<resultMap type="Login" id="Login">
+		<result column="user_id" property="id" />
+		<result column="user_pw" property="pw" />
+		<result column="is_admin" property="isAdmin" />
+	</resultMap>
+	<select id="get" resultMap="Login" parameterType="map">
+		select * from users where user_id=#{id} and user_pw=#{pw};
+	</select>
+	<select id="isAdmin"  resultType="Boolean" parameterType="map">
+		select is_admin from users_info where user_id=#{id};
+	</select>
+</mapper>

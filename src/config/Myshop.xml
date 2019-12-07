@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="MyshopInfo">
+	<resultMap type="Myshop" id="Myshop">
+		<result column="order_no" property="no" />
+		<result column="count(order_products.product_no)" property="cnt" />
+		<result column="receiver_name" property="name" />
+		<result column="receiver_address" property="address" />
+		<result column="receiver_email" property="email" />
+		<result column="receiver_phone" property="phone" />
+		<result column="product_no" property="pno" />
+		<result column="product_price" property="price" />
+		<result column="product_name" property="pname" />
+		<result column="product_img_url" property="imgUrl" />
+	</resultMap>
+	<select id="get" resultMap="Myshop" parameterType="map">
+		select orders.order_no, count(order_products.product_no), orders.receiver_name, orders.receiver_address, orders.receiver_email, orders.receiver_phone, order_products.product_no, products.product_price, products.product_name, products.product_img_url
+		from orders
+		join order_products on orders.order_no=order_products.order_no
+		join products on order_products.product_no=products.product_no
+		where orders.user_id=#{id}
+		group by orders.order_no, order_products.product_no
+		order by order_no desc;
+	</select>
+	
+	<select id="getAll" resultMap="Myshop" parameterType="map">
+		select orders.order_no, count(order_products.product_no), orders.receiver_name, orders.receiver_address, orders.receiver_email, orders.receiver_phone, order_products.product_no, products.product_price, products.product_name, products.product_img_url
+		from orders
+		join order_products on orders.order_no=order_products.order_no
+		join products on order_products.product_no=products.product_no
+		group by orders.order_no, order_products.product_no
+		order by order_no desc;
+	</select>
+	
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="ProductsInfo">
+	<resultMap type="Products" id="Products">
+		<result column="product_no" property="no" />
+		<result column="product_price" property="price" />
+		<result column="product_name" property="name" />
+		<result column="product_img_url" property="imgUrl" />
+		<result column="product_category" property="category" />
+	</resultMap>
+	<select id="all" resultMap="Products" >
+		select * from products order by product_no desc;
+	</select>
+	<select id="category" resultMap="Products" parameterType="map">
+		select * from products where product_category=#{type} order by product_no desc;
+	</select>
+
+</mapper>

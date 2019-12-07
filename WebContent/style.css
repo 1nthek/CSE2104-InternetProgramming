@@ -1,0 +1,124 @@
+@charset "UTF-8";
+*{
+ font-family: 'Noto Sans KR', sans-serif;
+}
+.button-1{
+	width: 140px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(15,15,15,.1), 0 2px 4px rgba(15,15,15,.1);
+    background-color: #e2e2e2;
+    color: #000!important;
+    border-radius: .2rem;
+    outline: 0;
+    margin: 14px;
+    cursor: pointer;
+}
+.button-2{
+	width: 140px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(15,15,15,.1), 0 2px 4px rgba(15,15,15,.1);
+	background-color: #434343;
+    color: #fff!important;
+    border-radius: .2rem;
+    outline: 0;
+    margin: 14px;
+    cursor: pointer;
+}
+.upload .title{
+	padding: 0px 10px 2px 0px;
+	width: 50px;
+	text-align: end;
+}
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: black;
+}
+a:hover {
+    color: black;
+}
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.not-work{
+   color: #b0b0b0;
+   cursor: not-allowed !important;
+}
+.header-title{
+	margin: 0 10px;
+	cursor: pointer;
+}
+.menu-title{
+	margin: 0 40px;
+	cursor: pointer;
+}
+.item-cont {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, 290px);
+    grid-template-rows: repeat(2, 520px);
+	max-width: 1250px;
+    margin: 0 auto 30px;
+}
+.item-cont>div{
+	cursor: pointer;
+}
+.flex-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-col{
+	flex-direction: column;
+}
+
+.cloth-img{
+	width: 290px;
+}
+
+th, .join td, .order td{
+	border: 1px solid #e2e2e2;
+	padding: 12px 30px;
+}
+
+.join td{
+	width: 600px;
+}
+.cart th{
+	padding: 0px;
+	border: 0;
+	margin: 0;
+    padding: 0;
+    height: 50px;
+    border-top: 1px solid #e7e7e7;
+}
+.cart td{
+	text-align: center;
+	border-top: 1px solid #e7e7e7;
+    padding: 10px 0px;
+}
+.help th{
+	padding: 0px;
+	border: 0;
+	margin: 0;
+    padding: 0;
+    border-top: 1px solid #e7e7e7;
+}
+.help td{
+	border-top: 1px solid #e7e7e7;
+    padding: 10px;
+}
+.order th{
+	text-align: left;
+    padding-left: 22px;
+    background: aliceblue;
+}
